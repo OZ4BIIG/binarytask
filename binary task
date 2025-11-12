@@ -1,0 +1,24 @@
+def decimal_to_binary(decimal, bitwidth):
+    binary = bin(decimal)[2:]  
+    if len(binary) < bitwidth:
+        binarty = binary.zfill(bitwidth)[-bitwidth:] 
+    else: 
+        binary = binary[-bitwidth:]  
+    return binary
+
+def apply_twos_complement(binary, bitwidth):
+    inverted = ''.join('1' if bit == '0' else '0' for bit in binary)
+    return decimal_to_binary(int(inverted, base =2) + 1, bitwidth)
+
+
+def decimal_input():
+    return int(input("Enter a decimal number: "))
+    
+def main():
+    # get bitwidth from user
+    
+    print(apply_twos_complement(decimal_to_binary(decimal_input(), 8), 8))
+
+if __name__ == "__main__":
+    main()
+
